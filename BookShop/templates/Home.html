@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for product in products %}
-        {{ product.name }}
+    <div class="m-5 shadow-lg p-3 mb-5">
+        <img class="img-fluid infoImg" src=""/>
+        <div class="bg-light text-dark float-left">
+          <div class="px-sm-5 py-5">
+            <span class="fw-bold"> {{product.name}} </span>
+                <h3>{{ product.author }}</h3>
+                {{ product.description }}
+          </div>
+        </div>
+      </div>
     {% endfor %}
 {% endblock %}
