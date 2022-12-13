@@ -18,8 +18,21 @@ class Show_Product(TemplateView):
 
 
 def add_Product(request, product_id):
+
     book = Product.objects.get(id=product_id)
     chosenBook = Chosen_Product.objects.create(Image=book.Image, name=book.name, author=book.author, description=book.description, cost=book.cost)
     messages.success(request, 'add successfully', 'success')
+
     return redirect('home')
 
+class Show_FinalChoose(TemplateView):
+    template_name = 'finallist.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+   
+        
+        context.update({
+            'chosen_products': Chosen_Product.objects.all(),
+        })
+
+        return context
