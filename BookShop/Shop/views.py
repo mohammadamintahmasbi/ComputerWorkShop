@@ -1,6 +1,7 @@
 from django.views.generic.base import TemplateView
-from django.shortcuts import render
-from .models import Product
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Product, Chosen_Product
 # Create your views here.
 
 class Show_Product(TemplateView):
@@ -14,3 +15,11 @@ class Show_Product(TemplateView):
         })
 
         return context
+
+
+def add_Product(request, product_id):
+    book = Product.objects.get(id=product_id)
+    chosenBook = Chosen_Product.objects.create(Image=book.Image, name=book.name, author=book.author, description=book.description, cost=book.cost)
+    messages.success(request, 'add successfully', 'success')
+    return redirect('home')
+

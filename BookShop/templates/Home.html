@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include 'messages.html' %}
     {% for product in products %}
       <div class="m-5 shadow-lg p-3 mb-5">
           <img class="img-fluid infoImg img-thumbnail" style="border-radius: 50%;width: 150px;height: 150px;" src="{{ product.Image.url }}"/>
@@ -7,7 +8,8 @@
             <div class="px-sm-5 py-5">
               <h2> {{product.name}} </h2>
                   <span class="fw-bold">{{ product.author }}<span><br />
-                  {{ product.cost }}
+                  {{ product.cost }}<br />
+              <a href="{% url 'add' product.id %}" class="btn btn-primary">Add</a><br />
             </div>
           </div>
         </div>
