@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for product in products %}
-    <div class="m-5 shadow-lg p-3 mb-5">
-        <img class="img-fluid infoImg" src=""/>
-        <div class="bg-light text-dark float-left">
-          <div class="px-sm-5 py-5">
-            <span class="fw-bold"> {{product.name}} </span>
-                <h3>{{ product.author }}</h3>
-                {{ product.description }}
+      <div class="m-5 shadow-lg p-3 mb-5">
+          <img class="img-fluid infoImg img-thumbnail" style="border-radius: 50%;width: 150px;height: 150px;" src="{{ product.Image.url }}"/>
+          <div class="bg-light text-dark float-left">
+            <div class="px-sm-5 py-5">
+              <h2> {{product.name}} </h2>
+                  <span class="fw-bold">{{ product.author }}<span><br />
+                  {{ product.cost }}
+            </div>
           </div>
         </div>
-      </div>
     {% endfor %}
 {% endblock %}
