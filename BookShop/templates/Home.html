@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'messages.html' %}
-<a href="{% url 'list' %}" class="btn btn-info">ShowList</a><br />
+<br />
+<a href="{% url 'list' %}" class="btn btn-info" style="margin:10px">ShowList</a><br />
     {% for product in products %}
       <div class="m-5 shadow-lg p-3 mb-5">
           <img class="img-fluid infoImg img-thumbnail" style="border-radius: 50%;width: 150px;height: 150px;" src="{{ product.Image.url }}"/>
           <div class="bg-light text-dark float-left">
             <div class="px-sm-5 py-5">
-              <h2> {{product.name}} </h2>
-                  <span class="fw-bold">{{ product.author }}<span><br />
-                  {{ product.cost }}<br />
+              <h2> Name: {{product.name}} </h2>
+                  <span class="fw-bold"> Author: {{ product.author }}<span><br />
+                  Cost: {{ product.cost }}<br />
               <a href="{% url 'add' product.id %}" class="btn btn-primary">Add</a><br />
             </div>
           </div>
