@@ -43,3 +43,12 @@ def Payment(request):
     Chosen_Product.objects.all().delete()
     messages.success(request, 'Payment was successfully', 'success')
     return redirect('home')
+
+def Back(request):
+    messages.success(request, 'Return to main page', 'success')
+    return redirect('home')
+
+def Delete(request, Product_id):
+    Chosen_Product.objects.get(id=Product_id).delete()
+    messages.success(request, 'You delete your item', 'success')
+    return redirect('list')

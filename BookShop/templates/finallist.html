@@ -11,8 +11,8 @@
     </thead>
     <tbody>
     {% for chosen_product in chosen_products %}
-        <tr>
-          <th scope="row">{{ forloop.counter }}</th>
+      <tr>
+          <th scope="row">{{ forloop.counter }}<a href="{% url 'delete' chosen_product.id %}" class="btn btn-danger"style="margin:10px">Delete</a></th>
           <td>{{ chosen_product.name }}</td>
           <td>{{ chosen_product.cost }}</td>
           <td>{{ chosen_product.author }}</td>
@@ -20,5 +20,6 @@
     {% endfor %}
     </tbody>
     </table>
-    <a href="{% url 'payment' %}" class="btn btn-success">Payment</a><br />
+    <a href="{% url 'payment' %}" class="btn btn-success"style="margin:10px">Payment</a><br /><br />
+    <a href="{% url 'back' %}" class="btn btn-primary"style="margin:10px">Back</a><br />
 {% endblock %}
