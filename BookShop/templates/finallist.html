@@ -1,3 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for chosen_product in chosen_products %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ chosen_product.name }}</td>
+          <td>{{ chosen_product.cost }}</td>
+          <td>{{ chosen_product.author }}</td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <th scope="row">Total Cost</th>
+        <td>  </td>
+    </tr>
+    </tbody>
+    </table>
+    <a href="{% url 'payment' %}" class="btn btn-success">Payment</a><br />
 {% endblock %}

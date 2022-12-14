@@ -27,12 +27,19 @@ def add_Product(request, product_id):
 
 class Show_FinalChoose(TemplateView):
     template_name = 'finallist.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-   
-        
+
+
         context.update({
             'chosen_products': Chosen_Product.objects.all(),
+            
         })
 
         return context
+
+def Payment(request):
+    Chosen_Product.objects.all().delete()
+    messages.success(request, 'Payment was successfully', 'success')
+    return redirect('home')
